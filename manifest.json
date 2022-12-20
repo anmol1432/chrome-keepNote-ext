@@ -1,16 +1,73 @@
 {
-    "manifest_version": 3,
-    "name": "Keep Note",
-    "description": "Keep Note Extension",
-    "version": "1.0",
-    "action": {
-      "default_popup": "popup/popup.html",
-      "default_icon": "images/icon.png"
+  "manifest_version": 3,
+  "name": "Keep Note",
+  "description": "Keep Note Extension",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "32": "images/icon.png",
+      "12": "images/main.jpeg"
+    }
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "main/background.js"
+  },
+  "host_permissions": [
+    "https://developer.chrome.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*",
+        "https://*/*",
+        "http://*/*"
+      ],
+      "css": [
+        "scripts/content.css"
+      ],
+      "js": [
+        "scripts/content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/icon.png",
+        "images/main.jpeg",
+        "images/main.png"
+      ],
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ]
     },
-    "content_scripts":[
-      {
-        "js":["scripts/content.js"],
-        "matches":["*"]
-      }
-    ]
-  }
+    {
+      "resources": [
+        "scripts/*",
+        "scripts/index.html",
+        "scripts/index.css",
+        "scripts/script.js",
+        "scripts/bootstrap.min.css",
+        "scripts/bootstrap.min.js",
+        "scripts/jquery-3.5.1.slim.min.js",
+        "scripts/popper.min.js",
+        "scripts/index.css"
+      ],
+      "matches": [
+        "*://*/*",
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ]
+}

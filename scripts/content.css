@@ -1,0 +1,25 @@
+ /* container.classList.add('container');
+ container.style.height='95%';
+ container.style.width='30%';
+ container.style.zIndex=999;
+ // container.style.backgroundColor = 'yellow';
+ container.id='Root';
+ container.style.position='absolute';
+ container.style.zIndex=100000000;
+ container.style.right='0px';
+ */
+
+ #RootNote {
+     display: none;
+     height: 100%;
+     width: 30%;
+     z-index: 9999999999999999;
+     position: fixed;
+     right: 0px;
+     top: 0px;
+     background-color: rgb(28, 27, 41) !important;
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+     font-family: 'Amiko', sans-serif;
+ }
