@@ -8,7 +8,6 @@
 
     let array = [indexCss, bootstrapCss, bootstrapJs, pooper, jQuery]
     array.map((item) => {
-      // console.log(item)
       if (item.includes('css')) {
         elem.insertAdjacentHTML('afterbegin', `<link rel="stylesheet" href="${item}" crossorigin="anonymous"></link>`)
       } else {
@@ -26,14 +25,10 @@
   fetch(chrome.runtime.getURL('scripts/index.html')).then((res) => {
     return res.text();
   }).then(async (res) => {
-    await container.insertAdjacentHTML('beforeend', res)
-    return 'htmlinjected'
-  }).then(async (res) => {
-    console.log(res)
-    await fetch(chrome.runtime.getURL('scripts/script.js'))
-      .then(res => res.url)
-      .then((res) => {
-        container.insertAdjacentHTML('beforeend', `<script src="${res}" type='text/javascript' crossorigin="anonymous"></script>`);
-      })
-  })
+    container.innerHTML = res;
+    return res
+  }).then(() => {
+    window.addEventListener("load", init())
+  });
+
 })();

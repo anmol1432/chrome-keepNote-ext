@@ -8,7 +8,7 @@
 .main {
     margin-top: 70px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
@@ -36,8 +36,8 @@
     background-color: #f7f4f4;
     border-style: none;
     font-weight: 100;
-    border-radius: 5%;
-    box-shadow: -2px 0px 12px 5px #00fca8;
+    border-radius: 2%;
+    box-shadow: -2px 0px 12px 5px #641515;
     outline: none;
 }
 
