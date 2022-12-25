@@ -47,8 +47,20 @@ function init() {
 
     }
 
-    function deleteNote(params) {
-        return ''
+    function deleteNote(e, id) {
+        let getNotes = JSON.parse(localStorage.getItem('myNote')) ? JSON.parse(localStorage.getItem('myNote')) : [{ 'text': text, 'id': id }];
+        getNotes.filter((item, index) => {
+            if (item.id == id) {
+                getNotes.splice(index, 1);
+            }
+        })
+        if (getNotes.length >= 1) {
+            localStorage.setItem('myNote', JSON.stringify(getNotes))
+        } else {
+            localStorage.removeItem('myNote')
+        }
+        document.getElementById(id).remove();
+        document.getElementById('textarea'.concat(id)).remove();
     }
 
     function saveNote(text, id) {
@@ -68,7 +80,7 @@ function init() {
         })
         localStorage.setItem('myNote', JSON.stringify(updatedNotes))
     }
-    
+
     // generate a random id
     function guidGenerator() {
         var S4 = function () {
@@ -102,7 +114,7 @@ function init() {
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" ></path>
                 </svg>
 
-                 <svg xmlns="http://www.w3.org/2000/svg" id="${id}" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" ${id} feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline>
+                 <svg xmlns="http://www.w3.org/2000/svg" id="${id}" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="deleteNote ${id} feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline>
                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>
                  </svg>
             </div>
@@ -113,6 +125,9 @@ function init() {
         document
             .querySelector(".editNote")
             .addEventListener("click", (e) => edit(e, id));
+        document
+            .querySelector(".deleteNote")
+            .addEventListener("click", (e) => deleteNote(e, id));
     }
 
     function addPreviousNotes(text, nodeId) {
@@ -127,7 +142,7 @@ function init() {
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" ></path>
                 </svg>
 
-                 <svg xmlns="http://www.w3.org/2000/svg" id="${id}" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" ${id} feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline>
+                 <svg xmlns="http://www.w3.org/2000/svg" id="${id}" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="deleteNote ${id} feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline>
                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>
                  </svg>
             </div>
@@ -137,6 +152,9 @@ function init() {
         document
             .querySelector(".editNote")
             .addEventListener("click", (e) => edit(e, id));
+        document
+            .querySelector(".deleteNote")
+            .addEventListener("click", (e) => deleteNote(e, id));
     }
     addNoteButton.addEventListener('click', () => addNote('Complete the work.', guidGenerator()));
 }
