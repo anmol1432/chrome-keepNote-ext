@@ -20,7 +20,7 @@
   factory(container);
   container.id = 'RootNote';
   container.classList.add('container');
-  container.setAttribute('draggable', true);
+  // container.setAttribute('draggable', true);
   document.body.appendChild(container)
   fetch(chrome.runtime.getURL('scripts/index.html')).then((res) => {
     return res.text();
