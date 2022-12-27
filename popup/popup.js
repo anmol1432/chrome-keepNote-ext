@@ -1,13 +1,8 @@
 (() => {
     document.getElementById("ToggleExt").addEventListener('change', async (e) => {
-        console.log(e.target.checked)
-        var port = chrome.runtime.connect({ name: "knockknock" });
-        port.postMessage({ joke: "Knock knock" });
-        port.onMessage.addListener(function (msg) {
-            if (msg.question === "Who's there?")
-                port.postMessage({ answer: "Madame" });
-            else if (msg.question === "Madame who?")
-                port.postMessage({ answer: "Madame... Bovary" });
+        chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+            var activeTab = tabs[0];
+            chrome.tabs.sendMessage(activeTab.id, { "message": e.target.checked });
         });
     })
 })();

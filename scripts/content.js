@@ -28,7 +28,7 @@
     container.innerHTML = res;
     return res
   }).then(() => {
-    window.addEventListener("load", init())
+    window.addEventListener("load", init());
   });
 
 })();

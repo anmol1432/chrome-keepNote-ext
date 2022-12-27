@@ -5,6 +5,25 @@ function init() {
     const notes = JSON.parse(localStorage.getItem("myNote"));
     const main = document.querySelector("#keepNoteMain");
 
+    chrome.runtime.onMessage.addListener(
+        function (request, sender, sendResponse) {
+            if (request.message) {
+                hide();
+            }
+            else {
+                show()
+            }
+        }
+    );
+
+    function hide() {
+        document.getElementById('RootNote').classList.add('d-none');
+    }
+
+    function show() {
+        document.getElementById('RootNote').classList.remove('d-none');
+    }
+
     function loadNotes(notes) {
         if (notes) {
             for (let i = 1; i <= notes.length;) {

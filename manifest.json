@@ -6,9 +6,15 @@
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
-      "32": "images/icon.png",
-      "12": "images/main.jpeg"
+      "16": "images/icon.png",
+      "42": "images/icon.png",
+      "128": "images/icon.png"
     }
+  },
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
   },
   "permissions": [
     "tabs",
