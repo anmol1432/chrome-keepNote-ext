@@ -126,8 +126,8 @@ function init() {
         main.insertAdjacentHTML(
             "afterbegin",
             `<div class="alert alert-info d-flex flex-row justify-content-between ${text ? "" : "hidden"
-            }" id="${id}"role="alert">
-            <div class="w-75 text${id}">${text}</div>
+            } m-2" id="${id}"role="alert">
+            <div class="w-75 text-wrap text${id}">${text}</div>
             <div class="w-25">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" ${id}  feather feather-edit-2 editNote" id="${id}">
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" ></path>
@@ -137,8 +137,9 @@ function init() {
                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>
                  </svg>
             </div>
+             <div class="m-2">
+            <textarea class="${id} m-2 d-none form-control"  id="textarea${id}" cols="40" rows="3" placeholder="Type your note here" type="text"></textarea>
       </div>
-      <textarea class="${id} d-none form-control"  id="textarea${id}" cols="40" rows="3" placeholder="Type your note here" type="text"></textarea>
       `);
         saveNote(text, id);
         document
@@ -154,8 +155,8 @@ function init() {
         main.insertAdjacentHTML(
             "afterbegin",
             `<div class="alert alert-info d-flex flex-row justify-content-between ${text ? "" : "hidden"
-            }" id="${id}"role="alert">
-            <div class="w-75 text${id}">${text}</div>
+            } m-2" id="${id}"role="alert">
+            <div class="w-75 text-wrap text${id}">${text}</div>
             <div class="w-25">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" ${id}  feather feather-edit-2 editNote" id="${id}">
                 <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" ></path>
@@ -165,8 +166,10 @@ function init() {
                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line>
                  </svg>
             </div>
-      </div>
-      <textarea class="${id} d-none form-control"  id="textarea${id}" cols="40" rows="3" placeholder="Type your note here" type="text"></textarea>
+            </div>
+            <div class="m-2">
+            <textarea class="${id}  d-none form-control"  id="textarea${id}" cols="40" rows="3" placeholder="Type your note here" type="text"></textarea>
+            </div>
       `);
         document
             .querySelector(".editNote")
